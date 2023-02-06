@@ -13,6 +13,7 @@ class Patika extends Model
 
     protected $fillable = [
         'ime',
+        'url_slike',
         'opis',
         'cena',
         'brend_id',

@@ -13,7 +13,7 @@ class Kategorija extends Model
 
     protected $fillable = [
         'naziv',
-        'url_slike',
+        'slug',
         'opis',
     ];
 

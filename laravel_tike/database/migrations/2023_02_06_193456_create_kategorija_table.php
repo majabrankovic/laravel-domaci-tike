@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('kategorije', function (Blueprint $table) {
             $table->id();
-            $table->string('naziv')->unique();
-            $table->string('url_slike')->unique();
+            $table->string('naziv');
+            $table->string('slug');
             $table->text('opis')->nullable();
             $table->timestamps();
         });

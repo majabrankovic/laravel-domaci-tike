@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('patike', function (Blueprint $table) {
             $table->id();
-            $table->text('ime'); 
+            $table->text('ime');
+            $table->string('url_slike')->unique(); 
             $table->text('opis')->nullable();   
             $table->integer('cena'); 
             $table->foreignId('brend_id');

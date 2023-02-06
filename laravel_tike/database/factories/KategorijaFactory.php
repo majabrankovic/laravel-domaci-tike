@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Faker\Generator as Faker;
+
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Kategorija>
@@ -17,9 +17,10 @@ class KategorijaFactory extends Factory
      */
     public function definition()
     {
+        $kategorije = ['Sportska obuca', 'Lifestyle obuca', 'Casual obuca', 'Hippy obuca', 'Zimska obuca', 'Letnja obuca'];
         return [
-            'naziv'=>$this->faker->name(),
-            'url_slike'=>$this->faker->imageUrl(300, 300, 'sneakers', true, 'Faker'),
+            'naziv'=>$this->faker->randomElement($kategorije),
+            'slug'=>$this->faker->word(),
             'opis'=>$this->faker->text(40),
         ];
     }
