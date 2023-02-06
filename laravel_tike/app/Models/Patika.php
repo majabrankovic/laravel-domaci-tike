@@ -9,6 +9,16 @@ class Patika extends Model
 {
     use HasFactory;
 
+    protected $table = 'patike';
+
+    protected $fillable = [
+        'ime',
+        'opis',
+        'cena',
+        'brend_id',
+        'user_id'
+    ];
+
     public function brend()
         {
             return $this->belongsTo(Brend::class);

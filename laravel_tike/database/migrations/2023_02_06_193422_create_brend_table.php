@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('brendovi', function (Blueprint $table) {
             $table->id();
             $table->string('ime',25)->unique();
-            $table->string('opis')->unique();
+            $table->string('opis');
             $table->foreignId('kategorija_id');
             $table->timestamps();
         });

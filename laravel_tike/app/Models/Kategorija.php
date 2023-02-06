@@ -9,6 +9,14 @@ class Kategorija extends Model
 {
     use HasFactory;
 
+    protected $table = 'kategorije';
+
+    protected $fillable = [
+        'naziv',
+        'url_slike',
+        'opis',
+    ];
+
     public function brend(){
         return $this->hasMany(Brend::class);
     }
