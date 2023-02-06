@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('patika', function (Blueprint $table) {
+        Schema::create('patike', function (Blueprint $table) {
             $table->id();
             $table->text('ime'); 
             $table->text('opis')->nullable();   
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('patika');
+        Schema::dropIfExists('patike');
     }
 };

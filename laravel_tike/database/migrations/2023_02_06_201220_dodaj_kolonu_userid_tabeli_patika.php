@@ -13,12 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('kategorije', function (Blueprint $table) {
-            $table->id();
-            $table->string('naziv')->unique();
-            $table->string('url_slike')->unique();
-            $table->text('opis')->nullable();
-            $table->timestamps();
+        Schema::table('patike', function (Blueprint $table) {
+            $table->foreignId("user_id");
         });
     }
 
@@ -29,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kategorije');
+        Schema::table('patike', function (Blueprint $table) {
+            $table->dropForeign("user_id");
+        });
     }
 };
