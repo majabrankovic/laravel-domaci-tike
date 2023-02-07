@@ -28,8 +28,7 @@ class PatikaController extends Controller
      */
     public function create()
     {
-        Patika::truncate();
-        Patika::factory()->create();
+       //
     }
 
     /**
@@ -40,26 +39,7 @@ class PatikaController extends Controller
      */
     public function store(Request $request)
     {
-        $validator=Validator::make($request->all(),[
-            'ime'=>'required|string|max:255',
-            'url_slike'=>'required|string|max:255',
-            'opis'=>'required|string',
-            'cena'=>'required',
-            'brend_id'=>'required'
-        ]);
-        if($validator->fails()){
-            return response()->json($validator->errors());
-        }
-        $patika=Patika::create([
-            'ime'=>$request->ime,
-            'url_slike'=>$request->url_slike,
-            'opis'=>$request->opis,
-            'cena'=>$request->cena,
-            'brend_id'=>$request->brend_id,
-            'user_id'=>Auth::user()->id,
-        ]);
-        return response()->json(['Patika je napravljena',
-        new PatikaResource($patika)]);
+        //
     }
 
     /**
@@ -70,7 +50,7 @@ class PatikaController extends Controller
      */
     public function show(Patika $patika)
     {
-        return new PatikaResource($patika);
+       //
     }
 
     /**
@@ -95,6 +75,7 @@ class PatikaController extends Controller
     {
         $validator=Validator::make($request->all(),[
             'brend_id'=>'required',
+            'user_id' => 'required',
             'ime'=>'required|string|max:255',
             'url_slike'=>'required|string|max:100',
             'opis'=>'required|string',
@@ -104,11 +85,13 @@ class PatikaController extends Controller
             return response()->json($validator->errors());
         }
         
-        $patika->brend_id = $request->brend_id; 
+        $patika->brend_id = $request->brend_id;
+        $patika->user_id = $request->user_id;
         $patika->ime=$request->ime;
         $patika->url_slike=$request->url_slike;
         $patika->opis=$request->opis;
         $patika->cena=$request->cena;
+
         
         $patika->save();
         return response()->json(['Patika je azurirana',
